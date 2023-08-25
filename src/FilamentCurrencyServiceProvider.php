@@ -22,7 +22,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        TextColumn::macro('currency', function (string|Closure|null $currency = null, bool $shouldConvert = false): static {
+        TextColumn::macro('currency', function (string | Closure $currency = null, bool $shouldConvert = false): static {
             $this->formatStateUsing(static function (Column $column, $state) use ($currency, $shouldConvert): ?string {
                 if (blank($state)) {
                     return null;

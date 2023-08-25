@@ -6,6 +6,9 @@ namespace Filament\Tables\Columns {
 
     class TextColumn
     {
-        public function currency(string|Closure|null $currency = null, bool $shouldConvert = false): self {return $this;}
+        public function currency(string | Closure $currency = null, bool $shouldConvert = false): self
+        {
+            return $this;
+        }
     }
 }
