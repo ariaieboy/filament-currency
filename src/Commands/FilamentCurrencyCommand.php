@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Ariaieboy\FilamentCurrency\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentCurrencyCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-currency';
 
     public $description = 'My command';
 
