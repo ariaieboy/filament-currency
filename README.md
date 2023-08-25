@@ -4,17 +4,17 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ariaieboy/filament-currency/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ariaieboy/filament-currency/actions?query=workflow%3A"Fix+PHP+Code+Styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ariaieboy/filament-currency.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/filament-currency)
 
-Filament V3 unlike V2 that uses [laravel-money](https://github.com/akaunting/laravel-money) package for formatting money TextColumns uses PHP native [NumberFormatter](https://www.php.net/manual/en/class.numberformatter.php) class.
+Filament V3 unlike V2 uses [laravel-money](https://github.com/akaunting/laravel-money) package for formatting money TextColumns uses PHP native [NumberFormatter](https://www.php.net/manual/en/class.numberformatter.php) class.
 
-This package will add a new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses Filament V2 money formatter.
+This package will add a new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the Filament V2 money formatter.
 
 By using this package you can configure the formatter using [laravel-money config](https://github.com/akaunting/laravel-money/blob/master/config/money.php).
 
-For example you can customize the `symbol`,`symbol_first`,`decimal_mark` and `thousands_separator` for each currency. Or if you want you can add your custom currency to the config and use it in `currency()` method instead of standard currencies.
+For example, you can customize the `symbol`, `symbol_first`, `decimal_mark`, and `thousands_separator` for each currency. Or if you want you can add your custom currency to the config and use it in the `currency()` method instead of standard money.
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require ariaieboy/filament-currency
