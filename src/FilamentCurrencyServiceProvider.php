@@ -4,6 +4,7 @@ namespace Ariaieboy\FilamentCurrency;
 
 use Akaunting\Money;
 use Closure;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Spatie\LaravelPackageTools\Package;
@@ -17,12 +18,13 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        $package->name(static::$name);
+        $package->name(static::$name)
+            ->hasViews();
     }
 
     public function bootingPackage(): void
     {
-        TextColumn::macro('currency', function (string | Closure $currency = null, bool $shouldConvert = false): TextColumn {
+        TextColumn::macro('currency', function (string|Closure $currency = null, bool $shouldConvert = false): TextColumn {
             /**
              * @var TextColumn $this
              */
@@ -42,6 +44,11 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
                 ))->format();
             });
 
+            return $this;
+        });
+        TextInput::macro('currencyMask', function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInput {
+            $this->view = "filament-currency::currency-mask";
+            $this->viewData(compact('thousandSeparator','decimalSeparator','precision'));
             return $this;
         });
     }
