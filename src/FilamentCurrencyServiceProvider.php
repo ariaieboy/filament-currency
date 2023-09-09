@@ -24,7 +24,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        TextColumn::macro('currency', function (string|Closure $currency = null, bool $shouldConvert = false): TextColumn {
+        TextColumn::macro('currency', function (string | Closure $currency = null, bool $shouldConvert = false): TextColumn {
             /**
              * @var TextColumn $this
              */
@@ -47,8 +47,9 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
         TextInput::macro('currencyMask', function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInput {
-            $this->view = "filament-currency::currency-mask";
-            $this->viewData(compact('thousandSeparator','decimalSeparator','precision'));
+            $this->view = 'filament-currency::currency-mask';
+            $this->viewData(compact('thousandSeparator', 'decimalSeparator', 'precision'));
+
             return $this;
         });
     }
