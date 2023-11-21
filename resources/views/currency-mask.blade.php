@@ -22,6 +22,13 @@
         init(){
         this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
         \$watch('masked',()=>this.updateInput());
+        \$watch('masked',()=>this.updateMasked());
+        },
+        updateMasked(){
+            if(typeof this.input === 'numeric'){
+                $el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
+                $el.dispatchEvent(new Event('input'));
+            }
         },
         updateInput(){
             this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
