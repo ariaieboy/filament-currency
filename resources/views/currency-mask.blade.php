@@ -19,7 +19,7 @@
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         init(){
-        this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+        \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
         \$watch('input',()=>this.updateMasked());
         \$el.addEventListener('input',(event)=>updateInput());
         \$el.addEventListener('blur',(event)=>updateInput());
