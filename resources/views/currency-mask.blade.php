@@ -18,20 +18,20 @@
     $xdata = <<<JS
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
-        masked:'',
         init(){
         this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
-        \$watch('masked',()=>this.updateInput());
-        \$watch('masked',()=>this.updateMasked());
+        \$watch('input',()=>this.updateMasked());
+        \$el.addEventListener('input',(event)=>updateInput());
+        \$el.addEventListener('blur',(event)=>updateInput());
         },
         updateMasked(){
-            if(typeof this.input === 'numeric'){
-                $el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
-                $el.dispatchEvent(new Event('input'));
+            if(typeof this.input === 'number'){
+                \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
+                \$el.dispatchEvent(new Event('input'));
             }
         },
         updateInput(){
-            this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
+            this.input = \$el.value?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
         }
     }
 JS;
@@ -77,9 +77,9 @@ JS;
                         'readonly' => $isReadOnly(),
                         'required' => $isRequired() && (! $isConcealed),
                         'step' => $getStep(),
-                       'x-model' => 'masked',
                         'type' => 'text',
                         'x-data' => $xdata,
+                        'x-on:change'=>'updateInput',
                         'x-mask:dynamic' => $xmask
                     ], escape: false)
             "
