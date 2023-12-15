@@ -21,8 +21,8 @@
         init(){
         \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
         \$watch('input',()=>this.updateMasked());
-        \$el.addEventListener('input',(event)=>updateInput());
-        \$el.addEventListener('blur',(event)=>updateInput());
+        \$el.addEventListener('input',(event)=>this.updateInput());
+        \$el.addEventListener('blur',(event)=>this.updateInput());
         },
         updateMasked(){
             if(typeof this.input === 'number'){
