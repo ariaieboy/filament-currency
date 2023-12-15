@@ -24,7 +24,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        TextColumn::macro('currency', function (string | Closure $currency = null, bool $shouldConvert = false): TextColumn {
+        TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false): TextColumn {
             /**
              * @var TextColumn $this
              */
