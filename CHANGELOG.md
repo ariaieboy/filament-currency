@@ -2,6 +2,10 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.3.0 - 2024-03-01
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.2.2...1.3.0
+
 ## 1.2.2 - 2023-12-15
 
 ### What's Changed
