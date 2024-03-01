@@ -1,6 +1,6 @@
 {
     "name": "ariaieboy/filament-currency",
-    "description": "This is my package filament-currency",
+    "description": "Bring back laravel-money formatter for Filament Text Column",
     "keywords": [
         "ariaieboy",
         "laravel",
@@ -23,7 +23,7 @@
         "php": "~8.1|~8.2|~8.3",
         "akaunting/laravel-money": "^1.2|^2.0|^3.0|^4.0|^5.1",
         "filament/tables": "^3.0",
-        "illuminate/contracts": "^10.0",
+        "illuminate/contracts": "^10.0|^11",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
