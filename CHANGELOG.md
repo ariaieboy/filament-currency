@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.4.0 - 2024-04-01
+
+### What's Changed
+
+* use new laravel-money env for configuration by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/19
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.3.1...1.4.0
+
 ## 1.3.1 - 2024-03-21
 
 - bump laravel-money to 5.2 so we can support laravel 11
