@@ -3,7 +3,6 @@
 namespace Ariaieboy\FilamentCurrency;
 
 use Akaunting\Money;
-use Closure;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
@@ -24,33 +23,41 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false): TextColumn {
-            /**
-             * @var TextColumn $this
-             */
-            $this->formatStateUsing(static function (Column $column, $state) use ($currency, $shouldConvert): ?string {
-                if (blank($state)) {
-                    return null;
-                }
+        TextColumn::macro(
+            'currency',
+            function (string | \Closure | null $currency = null, bool $shouldConvert = false): TextColumn {
+                /**
+                 * @var TextColumn $this
+                 */
+                $this->formatStateUsing(
+                    static function (Column $column, $state) use ($currency, $shouldConvert): ?string {
+                        if (blank($state)) {
+                            return null;
+                        }
 
-                if (blank($currency)) {
-                    $currency = env('DEFAULT_CURRENCY', 'USD');
-                }
+                        if (blank($currency)) {
+                            $currency = config('money.defaults.currency');
+                        }
 
-                return (new Money\Money(
-                    $state,
-                    (new Money\Currency(strtoupper($column->evaluate($currency)))),
-                    $shouldConvert,
-                ))->format();
-            });
+                        return (new Money\Money(
+                            $state,
+                            (new Money\Currency(strtoupper($column->evaluate($currency)))),
+                            $shouldConvert,
+                        ))->format();
+                    },
+                );
 
-            return $this;
-        });
-        TextInput::macro('currencyMask', function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInput {
-            $this->view = 'filament-currency::currency-mask';
-            $this->viewData(compact('thousandSeparator', 'decimalSeparator', 'precision'));
+                return $this;
+            },
+        );
+        TextInput::macro(
+            'currencyMask',
+            function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInput {
+                $this->view = 'filament-currency::currency-mask';
+                $this->viewData(compact('thousandSeparator', 'decimalSeparator', 'precision'));
 
-            return $this;
-        });
+                return $this;
+            },
+        );
     }
 }
