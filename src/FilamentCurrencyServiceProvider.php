@@ -19,6 +19,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name(static::$name)
+            ->hasConfigFile()
             ->hasViews();
     }
 
@@ -34,7 +35,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
                 }
 
                 if (blank($currency)) {
-                    $currency = env('DEFAULT_CURRENCY', 'USD');
+                    $currency = config('filament-currency.default_currency');
                 }
 
                 return (new Money\Money(
