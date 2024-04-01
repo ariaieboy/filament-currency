@@ -1,4 +1,5 @@
 <?php
+
 return [
     /**
      * Since we support laravel-money version >=1 we used `CURRENCY_DEFAULT` env that is used in laravel-money 1<=version<=4
