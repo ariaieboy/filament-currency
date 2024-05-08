@@ -25,7 +25,7 @@
         \$el.addEventListener('blur',(event)=>this.updateInput());
         },
         updateMasked(){
-            if(typeof this.input === 'number'){
+            if(typeof Number(this.input) === 'number'){
                 \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
                 \$el.dispatchEvent(new Event('input'));
             }
