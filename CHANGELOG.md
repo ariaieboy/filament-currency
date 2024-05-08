@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.4.1 - 2024-05-08
+
+### What's Changed
+
+* fix the  $set bug by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/21
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.4.0...1.4.1
+
 ## 1.4.0 - 2024-04-01
 
 ### What's Changed
