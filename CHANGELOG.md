@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.5.0 - 2024-05-14
+
+### What's Changed
+
+* refactor the currency mask to use native alpine x-model by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/22
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.4.1...1.5.0
+
 ## 1.4.1 - 2024-05-08
 
 ### What's Changed
