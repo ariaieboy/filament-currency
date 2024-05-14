@@ -8,6 +8,8 @@ Filament V3 unlike V2 that uses [laravel-money](https://github.com/akaunting/lar
 
 This package will add a new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the Filament V2 money formatter.
 
+Additionally, you can use the `currency(string | Closure $currency = null, bool $shouldConvert = false)` method when adding Summarizers to the table. Currently this method only exists for the `Sum` and `Average` Summarizer.
+
 By using this package you can configure the formatter using [laravel-money config](https://github.com/akaunting/laravel-money/blob/master/config/money.php).
 
 For example, you can customize the `symbol`, `symbol_first`, `decimal_mark`, and `thousands_separator` for each currency. Or if you want you can add your custom currency to the config and use it in the `currency()` method instead of standard money.
@@ -32,6 +34,14 @@ php artisan vendor:publish --tag=money
 ```php
 \Filament\Tables\Columns\TextColumn::make('money')
     ->currency('USD');
+
+\Filament\Tables\Columns\TextColumn::make('money')
+    ->currency('USD')
+    ->summarize(\Filament\Tables\Columns\Summarizers\Sum::make()->currency());
+
+\Filament\Tables\Columns\TextColumn::make('money')
+    ->currency('USD')
+    ->summarize(\Filament\Tables\Columns\Summarizers\Average::make()->currency());
 
 \Filament\Forms\Components\TextInput::make('money')
     ->currencyMask(thousandSeparator: ',',decimalSeparator: '.',precision: 2)

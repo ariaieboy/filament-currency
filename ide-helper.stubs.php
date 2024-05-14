@@ -22,3 +22,22 @@ namespace Filament\Forms\Components {
         }
     }
 }
+namespace Filament\Tables\Columns\Summarizers {
+
+    use Closure;
+
+    class Average
+    {
+        public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self
+        {
+            return $this;
+        }
+    }
+    class Sum
+    {
+        public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self
+        {
+            return $this;
+        }
+    }
+}
