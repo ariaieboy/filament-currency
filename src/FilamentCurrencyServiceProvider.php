@@ -9,8 +9,7 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Filament\Tables\Columns\Summarizers\Sum;
-use Filament\Tables\Columns\Summarizers\Summarizer;
+use Filament\Tables\Columns\Summarizers;
 
 class FilamentCurrencyServiceProvider extends PackageServiceProvider
 {
@@ -57,8 +56,28 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        Sum::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false): Sum {
-            $this->formatStateUsing(static function (Summarizer $summarizer, $state) use ($currency, $shouldConvert): ?string {
+        Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false): Summarizers\Sum {
+            $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert): ?string {
+                if (blank($state)) {
+                    return null;
+                }
+
+                if (blank($currency)) {
+                    $currency = config('filament-currency.default_currency');
+                }
+
+                return (new Money\Money(
+                    $state,
+                    (new Money\Currency(strtoupper($summarizer->evaluate($currency)))),
+                    $shouldConvert,
+                ))->format();
+            });
+
+            return $this;
+        });
+
+        Summarizers\Average::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false): Summarizers\Average {
+            $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert): ?string {
                 if (blank($state)) {
                     return null;
                 }
