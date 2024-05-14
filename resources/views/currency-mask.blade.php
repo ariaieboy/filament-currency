@@ -18,11 +18,11 @@
     $xdata = <<<JS
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
+        masked:'',
         init(){
-        \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
+        this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+        \$watch('masked',()=>this.updateInput());
         \$watch('input',()=>this.updateMasked());
-        \$el.addEventListener('input',(event)=>this.updateInput());
-        \$el.addEventListener('blur',(event)=>this.updateInput());
         },
         updateMasked(){
             if(typeof Number(this.input) === 'number'){
@@ -79,7 +79,7 @@ JS;
                         'step' => $getStep(),
                         'type' => 'text',
                         'x-data' => $xdata,
-                        'x-on:change'=>'updateInput',
+                        'x-model'=>'masked',
                         'x-mask:dynamic' => $xmask
                     ], escape: false)
             "
