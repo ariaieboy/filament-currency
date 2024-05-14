@@ -11,7 +11,7 @@ namespace Filament\Tables\Columns {
             return $this;
         }
     }
-}
+}e
 
 namespace Filament\Forms\Components {
     class TextInput
