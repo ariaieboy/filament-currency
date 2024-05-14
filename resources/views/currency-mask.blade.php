@@ -20,7 +20,7 @@
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         masked:'',
         init(){
-        this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+        \$nextTick(()=>this.masked = this.input?.toString().replaceAll('.','$decimalSeparator'));
         \$watch('masked',()=>this.updateInput());
         \$watch('input',()=>this.updateMasked());
         },
