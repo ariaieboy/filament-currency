@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.6.0 - 2024-05-14
+
+### What's Changed
+
+* Adding new macro's to Filament Table Summarizer by @abishekrsrikaanth in https://github.com/ariaieboy/filament-currency/pull/23
+
+### New Contributors
+
+* @abishekrsrikaanth made their first contribution in https://github.com/ariaieboy/filament-currency/pull/23
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2024-05-14
 
 ### What's Changed
