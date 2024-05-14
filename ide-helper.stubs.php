@@ -22,6 +22,7 @@ namespace Filament\Forms\Components {
         }
     }
 }
+
 namespace Filament\Tables\Columns\Summarizers {
 
     use Closure;

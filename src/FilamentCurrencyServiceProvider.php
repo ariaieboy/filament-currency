@@ -6,10 +6,10 @@ use Akaunting\Money;
 use Closure;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\Summarizers;
 use Filament\Tables\Columns\TextColumn;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Filament\Tables\Columns\Summarizers;
 
 class FilamentCurrencyServiceProvider extends PackageServiceProvider
 {
@@ -26,7 +26,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        $formatter = static function($state, $evaluator, $currency, $shouldConvert) {
+        $formatter = static function ($state, $evaluator, $currency, $shouldConvert) {
             if (blank($state)) {
                 return null;
             }
@@ -41,14 +41,14 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
                 $shouldConvert,
             ))->format();
         };
-        TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use($formatter): TextColumn {
+        TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): TextColumn {
             /**
              * @var TextColumn $this
              */
             $this->formatStateUsing(static function (Column $column, $state) use ($currency, $shouldConvert, $formatter): ?string {
 
                 return $formatter($state, $column, $currency, $shouldConvert);
-                
+
             });
 
             return $this;
@@ -60,7 +60,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use($formatter): Summarizers\Sum {
+        Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): Summarizers\Sum {
 
             $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
 
@@ -71,7 +71,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        Summarizers\Average::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use($formatter): Summarizers\Average {
+        Summarizers\Average::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): Summarizers\Average {
 
             $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
 
