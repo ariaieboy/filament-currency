@@ -6,15 +6,26 @@
 
 Filament V3 unlike V2 that uses [laravel-money](https://github.com/akaunting/laravel-money) package for formatting money TextColumns uses PHP native [NumberFormatter](https://www.php.net/manual/en/class.numberformatter.php) class.
 
-This package will add a new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the Filament V2 money formatter.
+### Text Column (Table Builder)
 
-Additionally, you can use the `currency(string | Closure $currency = null, bool $shouldConvert = false)` method when adding Summarizers to the table. Currently this method only exists for the `Sum` and `Average` Summarizer.
+A new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the Filament V2 money formatter.
+
+### Summary (Table Builder)
+
+The summarizer classes `Sum` and `Average` contains the method `currency(string | Closure $currency = null, bool $shouldConvert = false)` to display the value in the configured currency format.
+
+### Text Entry (InfoLists)
+
+A new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextEntry`
+
+### Text Input (Form Builder)
+
+We also have a `currencyMask()` method for `TextInput` that lets you mask your numbers in front-end and return the plain number to back-end.
 
 By using this package you can configure the formatter using [laravel-money config](https://github.com/akaunting/laravel-money/blob/master/config/money.php).
 
 For example, you can customize the `symbol`, `symbol_first`, `decimal_mark`, and `thousands_separator` for each currency. Or if you want you can add your custom currency to the config and use it in the `currency()` method instead of standard money.
 
-We also have a `currencyMask()` method for `TextInput` that lets you mask your numbers in front-end and return the plain number to back-end.
 ## Installation
 
 You can install the package via Composer:
@@ -42,6 +53,9 @@ php artisan vendor:publish --tag=money
 \Filament\Tables\Columns\TextColumn::make('money')
     ->currency('USD')
     ->summarize(\Filament\Tables\Columns\Summarizers\Average::make()->currency());
+
+\Filament\Infolists\Components\TextEntry::make('money')
+    ->currency('USD');
 
 \Filament\Forms\Components\TextInput::make('money')
     ->currencyMask(thousandSeparator: ',',decimalSeparator: '.',precision: 2)
