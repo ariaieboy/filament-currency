@@ -5,10 +5,10 @@ namespace Ariaieboy\FilamentCurrency;
 use Akaunting\Money;
 use Closure;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Summarizers;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Infolists\Components\TextEntry;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -42,7 +42,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
                 $shouldConvert,
             ))->format();
         };
-        
+
         TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): TextColumn {
             /**
              * @var TextColumn $this

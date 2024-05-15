@@ -14,7 +14,7 @@ namespace Filament\Tables\Columns {
 }
 
 namespace Filament\Forms\Components {
-    
+
     class TextInput
     {
         public function currencyMask($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): self
