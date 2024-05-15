@@ -14,6 +14,7 @@ namespace Filament\Tables\Columns {
 }
 
 namespace Filament\Forms\Components {
+    
     class TextInput
     {
         public function currencyMask($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): self
@@ -35,6 +36,19 @@ namespace Filament\Tables\Columns\Summarizers {
         }
     }
     class Sum
+    {
+        public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self
+        {
+            return $this;
+        }
+    }
+}
+
+namespace Filament\Infolists\Components {
+
+    use Closure;
+
+    class TextEntry
     {
         public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self
         {

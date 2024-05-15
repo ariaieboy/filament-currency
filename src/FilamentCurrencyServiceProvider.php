@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Summarizers;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Infolists\Components\TextEntry;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -41,6 +42,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
                 $shouldConvert,
             ))->format();
         };
+        
         TextColumn::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): TextColumn {
             /**
              * @var TextColumn $this
@@ -83,6 +85,19 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
 
                 return $formatter($state, $summarizer, $currency, $shouldConvert);
+
+            });
+
+            return $this;
+        });
+
+        TextEntry::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): TextEntry {
+            /**
+             * @var TextEntry $this
+             */
+            $this->formatStateUsing(static function (TextEntry $column, $state) use ($currency, $shouldConvert, $formatter): ?string {
+
+                return $formatter($state, $column, $currency, $shouldConvert);
 
             });
 
