@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.7.0 - 2024-05-15
+
+### What's Changed
+
+* Adding a new macro to format TextEntry for Infolists by @abishekrsrikaanth in https://github.com/ariaieboy/filament-currency/pull/24
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.6.2...1.7.0
+
 ## 1.6.2 - 2024-05-14
 
 **Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.6.1...1.6.2
