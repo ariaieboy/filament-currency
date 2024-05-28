@@ -20,18 +20,21 @@
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         masked:'',
         init(){
-        \$nextTick(()=>this.masked = this.input?.toString().replaceAll('.','$decimalSeparator'));
+        \$nextTick(this.updateMasked());
         \$watch('masked',()=>this.updateInput());
         \$watch('input',()=>this.updateMasked());
         },
         updateMasked(){
+            console.log('masked')
+
             if(typeof Number(this.input) === 'number'){
-                \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
+                this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 \$el.dispatchEvent(new Event('input'));
             }
         },
         updateInput(){
-            this.input = \$el.value?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
+            console.log('input')
+            this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
         }
     }
 JS;
