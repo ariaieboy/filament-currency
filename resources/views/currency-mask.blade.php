@@ -25,15 +25,12 @@
         \$watch('input',()=>this.updateMasked());
         },
         updateMasked(){
-            console.log('masked')
-
             if(typeof Number(this.input) === 'number'){
                 this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 \$el.dispatchEvent(new Event('input'));
             }
         },
         updateInput(){
-            console.log('input')
             this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
         }
     }
