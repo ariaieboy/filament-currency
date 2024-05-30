@@ -19,22 +19,19 @@
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         masked:'',
-        init() {
-            \$nextTick(() => {
-                this.updateMasked();
-            });
-            \$watch('masked', () => this.updateInput());
-            \$watch('input', () => this.updateMasked());
+        init(){
+            \$nextTick(this.updateMasked());
+            \$watch('masked',()=>this.updateInput());
+            \$watch('input',()=>this.updateMasked());
         },
         updateMasked(){
-            if(typeof Number(this.input) === 'number'){
-                \$el.value = this.input?.toString().replaceAll('.','$decimalSeparator');
-                this.masked = \$el.value;
+            if(typeof Number(this.input) === 'number' && (\$data && \$data.input)) {
+                this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 \$el.dispatchEvent(new Event('input'));
             }
         },
         updateInput(){
-            this.input = \$el.value?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
+            this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
         }
     }
 JS;
