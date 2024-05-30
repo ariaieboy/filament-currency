@@ -22,10 +22,13 @@
         init(){
         \$nextTick(this.updateMasked());
         \$watch('masked',()=>this.updateInput());
+        \$watch('input', () => this.updateMasked());
         },
-        updateMasked(){
+        updateMasked(value, oldValue){
             if(this.input !== undefined && typeof Number(this.input) === 'number') {
-                this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+                if(this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') != this.input){
+                    this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+                }
             }
         },
         updateInput(){
