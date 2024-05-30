@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.7.3 - 2024-05-30
+
+### What's Changed
+
+* Fix issue in repeater when input is undefined or 0 by @nielsvh2103 in https://github.com/ariaieboy/filament-currency/pull/29
+
+### New Contributors
+
+* @nielsvh2103 made their first contribution in https://github.com/ariaieboy/filament-currency/pull/29
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.7.2...1.7.3
+
 ## 1.7.2 - 2024-05-28
 
 **Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.7.1...1.7.2
