@@ -20,14 +20,17 @@
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         masked:'',
         init(){
-        \$nextTick(this.updateMasked());
-        \$watch('masked',()=>this.updateInput());
-        \$watch('input', () => this.updateMasked());
+            \$nextTick(this.updateMasked());
+            \$watch('masked', () => this.updateInput());
+            \$watch('input', () => this.updateMasked());
         },
-        updateMasked(value, oldValue){
+        updateMasked(){
             if(this.input !== undefined && typeof Number(this.input) === 'number') {
-                if(this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') != this.input){
+                let normalizedMasked = this.masked?.replaceAll('$thousandSeparator', '').replaceAll('$decimalSeparator', '.');
+
+                if (normalizedMasked != this.input?.toString()) {
                     this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
+                    \$el.dispatchEvent(new Event('input'));
                 }
             }
         },
