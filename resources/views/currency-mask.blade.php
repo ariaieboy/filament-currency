@@ -4,6 +4,10 @@
     $id = $getId();
     $isConcealed = $isConcealed();
     $isDisabled = $isDisabled();
+    $isLive = $isLive();
+    $isLiveOnBlur = $isLiveOnBlur();
+    $isLiveDebounced = $isLiveDebounced();
+    $liveDebounce = $getLiveDebounce();
     $isPrefixInline = $isPrefixInline();
     $isSuffixInline = $isSuffixInline();
     $mask = $getMask();
@@ -15,6 +19,7 @@
     $suffixLabel = $getSuffixLabel();
     $statePath = $getStatePath();
     $xmask = "\$money(\$input,'$decimalSeparator','$thousandSeparator',$precision)";
+    $xmodel = "x-model".($isLive?($isLiveOnBlur?".lazy":($isLiveDebounced?(".debounce.".$liveDebounce."ms"):"")):"");
     $xdata = <<<JS
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
@@ -80,7 +85,7 @@ JS;
                         'step' => $getStep(),
                         'type' => 'text',
                         'x-data' => $xdata,
-                        'x-model'=>'masked',
+                        $xmodel =>'masked',
                         'x-mask:dynamic' => $xmask
                     ], escape: false)
             "
