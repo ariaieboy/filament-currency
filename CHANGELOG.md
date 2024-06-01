@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.8.0 - 2024-06-01
+
+### What's Changed
+
+* add debounce and onBlur support by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/35
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.7.5...1.8.0
+
 ## 1.7.5 - 2024-05-30
 
 **Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.7.4...1.7.5
