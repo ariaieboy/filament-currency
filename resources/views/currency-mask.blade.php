@@ -31,7 +31,7 @@
         },
         updateMasked(value, oldValue){
             if(this.input !== undefined && typeof Number(this.input) === 'number') {
-                if(this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') != this.input){
+                if(this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== this.input){
                     this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 }
             }
