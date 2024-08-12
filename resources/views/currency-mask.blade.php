@@ -26,7 +26,7 @@
         masked:'',
         init(){
         \$nextTick(this.updateMasked());
-        \$watch('masked',()=>this.updateInput());
+        \$watch('masked',(value, oldValue)=>this.updateInput(value, oldValue));
         \$watch('input', () => this.updateMasked());
         },
         updateMasked(){
