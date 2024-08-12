@@ -2,6 +2,10 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.8.4 - 2024-08-12
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.8.3...1.8.4
+
 ## 1.8.3 - 2024-08-12
 
 * fix issue https://github.com/ariaieboy/filament-currency/issues/39#issuecomment-2284272710
