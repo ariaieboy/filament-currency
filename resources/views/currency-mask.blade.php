@@ -26,7 +26,7 @@
         masked:'',
         init(){
         \$nextTick(this.updateMasked());
-        \$watch('masked',(value, oldValue)=>this.updateInput(value, oldValue));
+        \$watch('masked',(value, oldValue)=>this.updateInput(value,oldValue));
         \$watch('input', () => this.updateMasked());
         },
         updateMasked(){
@@ -37,8 +37,9 @@
             }
         },
         updateInput(value, oldValue){
-            if(value !== oldValue)
+            if(value?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== oldValue?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.')){
                 this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
+            }
         }
     }
 JS;
