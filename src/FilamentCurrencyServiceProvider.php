@@ -9,6 +9,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Summarizers;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\TextInputColumn;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -64,7 +65,15 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
             return $this;
         });
+        TextInputColumn::macro('currencyMask',function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInputColumn {
+            /**
+             * @var TextInput $this
+             */
+            $this->view = 'filament-currency::text-input-column';
+            $this->viewData(compact('thousandSeparator', 'decimalSeparator', 'precision'));
 
+            return $this;
+        });
         Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, bool $shouldConvert = false) use ($formatter): Summarizers\Sum {
             /**
              * @var Summarizers\Sum $this

@@ -29,14 +29,14 @@
         },
         updateMasked(){
             if(this.input !== undefined && typeof Number(this.input) === 'number') {
-                if(this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== this.input){
+                if(this.masked?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== this.input){
                     this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 }
             }
         },
         updateInput(value, oldValue){
-            if(value?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== oldValue?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.')){
-                this.input = this.masked?.replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
+            if(value?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== oldValue?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.')){
+                this.input = this.masked?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
             }
         }
     }

@@ -11,6 +11,13 @@ namespace Filament\Tables\Columns {
             return $this;
         }
     }
+    class TextInputColumn
+    {
+        public function currencyMask($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): self
+        {
+            return $this;
+        }
+    }
 }
 
 namespace Filament\Forms\Components {
