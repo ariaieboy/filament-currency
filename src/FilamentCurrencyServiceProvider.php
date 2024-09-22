@@ -65,7 +65,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
             return $this;
         });
-        TextInputColumn::macro('currencyMask',function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInputColumn {
+        TextInputColumn::macro('currencyMask', function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInputColumn {
             /**
              * @var TextInput $this
              */
