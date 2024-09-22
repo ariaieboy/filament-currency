@@ -1,13 +1,11 @@
 @php
     $datalistOptions = $getDatalistOptions();
     $extraAlpineAttributes = $getExtraAlpineAttributes();
+    $hasInlineLabel = $hasInlineLabel();
     $id = $getId();
     $isConcealed = $isConcealed();
     $isDisabled = $isDisabled();
-    $isLive = $isLive();
-    $isLiveOnBlur = $isLiveOnBlur();
-    $isLiveDebounced = $isLiveDebounced();
-    $liveDebounce = $getLiveDebounce();
+    $isPasswordRevealable = $isPasswordRevealable();
     $isPrefixInline = $isPrefixInline();
     $isSuffixInline = $isSuffixInline();
     $mask = $getMask();
@@ -45,7 +43,17 @@
 JS;
 @endphp
 
-<x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
+<x-dynamic-component
+        :component="$getFieldWrapperView()"
+        :field="$field">
+    <x-slot
+            name="label"
+            @class([
+                'sm:pt-1.5' => $hasInlineLabel,
+            ])
+    >
+        {{ $getLabel() }}
+    </x-slot>
     <x-filament::input.wrapper
             :disabled="$isDisabled"
             :inline-prefix="$isPrefixInline"
@@ -56,11 +64,12 @@ JS;
             :suffix="$suffixLabel"
             :suffix-actions="$suffixActions"
             :suffix-icon="$suffixIcon"
+            :suffix-icon-color="$getSuffixIconColor()"
             :valid="! $errors->has($statePath)"
             class="fi-fo-text-input"
             :attributes="
             \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
-                ->class(['overflow-hidden'])
+                ->class(['fi-fo-text-input overflow-hidden'])
         "
     >
         <x-filament::input
