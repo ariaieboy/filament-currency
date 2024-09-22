@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.9.0 - 2024-09-22
+
+### What's Changed
+
+* 41 add textinputcolumn currencymask support by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/42
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.8.4...1.9.0
+
 ## 1.8.4 - 2024-08-12
 
 **Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.8.3...1.8.4
