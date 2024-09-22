@@ -22,6 +22,10 @@ A new `currency(string | Closure $currency = null, bool $shouldConvert = false)`
 
 We also have a `currencyMask()` method for `TextInput` that lets you mask your numbers in front-end and return the plain number to back-end.
 
+### Text Input Column (Table Builder)
+
+We also have a `currencyMask()` method for `TextInputColumn` that lets you mask your numbers in front-end and return the plain number to back-end.
+
 By using this package you can configure the formatter using [laravel-money config](https://github.com/akaunting/laravel-money/blob/master/config/money.php).
 
 For example, you can customize the `symbol`, `symbol_first`, `decimal_mark`, and `thousands_separator` for each currency. Or if you want you can add your custom currency to the config and use it in the `currency()` method instead of standard money.
