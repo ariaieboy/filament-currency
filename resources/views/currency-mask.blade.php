@@ -17,7 +17,7 @@
     $suffixLabel = $getSuffixLabel();
     $statePath = $getStatePath();
     $xmask = "\$money(\$input,'$decimalSeparator','$thousandSeparator',$precision)";
-    $xmodel = "x-model".($isLive?($isLiveOnBlur?".lazy":($isLiveDebounced?(".debounce.".$liveDebounce."ms"):"")):"");
+    $xmodel = "x-model".($isLive()?($isLiveOnBlur()?".lazy":($isLiveDebounced()?(".debounce.".$getLiveDebounce()."ms"):"")):"");
     $xdata = <<<JS
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
