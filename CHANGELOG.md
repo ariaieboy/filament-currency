@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.9.1 - 2024-09-24
+
+### What's Changed
+
+* fix safari error on required inputs by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/44
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.9.0...1.9.1
+
 ## 1.9.0 - 2024-09-22
 
 ### What's Changed
