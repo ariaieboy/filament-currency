@@ -2,6 +2,12 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.9.2 - 2024-09-29
+
+- add php 8.4 to composer.json
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.9.1...1.9.2
+
 ## 1.9.1 - 2024-09-24
 
 ### What's Changed
