@@ -2,6 +2,12 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.10.0 - 2024-11-03
+
+- add support for `MONEY_DEFAULTS_CONVERT` env variable
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.9.2...1.10.0
+
 ## 1.9.2 - 2024-09-29
 
 - add php 8.4 to composer.json
