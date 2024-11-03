@@ -36,9 +36,10 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             if (blank($currency)) {
                 $currency = config('filament-currency.default_currency');
             }
-            if (is_null($shouldConvert)){
+            if (is_null($shouldConvert)) {
                 $shouldConvert = config('filament-currency.default_convert');
             }
+
             return (new Money\Money(
                 $state,
                 (new Money\Currency(strtoupper($evaluator->evaluate($currency)))),
@@ -46,7 +47,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             ))->format();
         };
 
-        TextColumn::macro('currency', function (string | Closure | null $currency = null, bool|null $shouldConvert = null) use ($formatter): TextColumn {
+        TextColumn::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): TextColumn {
             /**
              * @var TextColumn $this
              */
@@ -58,7 +59,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
             return $this;
         });
-        Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, bool|null $shouldConvert = null) use ($formatter): Summarizers\Sum {
+        Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): Summarizers\Sum {
             /**
              * @var Summarizers\Sum $this
              */
@@ -71,7 +72,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        Summarizers\Average::macro('currency', function (string | Closure | null $currency = null, bool|null $shouldConvert = null) use ($formatter): Summarizers\Average {
+        Summarizers\Average::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): Summarizers\Average {
             /**
              * @var Summarizers\Average $this
              */
@@ -84,7 +85,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        TextEntry::macro('currency', function (string | Closure | null $currency = null, bool|null $shouldConvert = null) use ($formatter): TextEntry {
+        TextEntry::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): TextEntry {
             /**
              * @var TextEntry $this
              */
