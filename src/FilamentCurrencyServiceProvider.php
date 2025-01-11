@@ -60,7 +60,6 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             return $this;
         });
 
-        
         Summarizers\Summarizer::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): Summarizers\Summarizer {
             /**
              * @var Summarizers\Sum $this
@@ -72,7 +71,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
             return $this;
         });
-        
+
         Summarizers\Sum::macro('currency', function (string | Closure | null $currency = null, ?bool $shouldConvert = null) use ($formatter): Summarizers\Sum {
             /**
              * @var Summarizers\Sum $this
