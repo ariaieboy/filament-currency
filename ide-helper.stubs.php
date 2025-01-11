@@ -35,6 +35,14 @@ namespace Filament\Tables\Columns\Summarizers {
 
     use Closure;
 
+    class Summarizer
+    {
+        public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self
+        {
+            return $this;
+        }
+    }
+
     class Average
     {
         public function currency(string | Closure | null $currency = null, bool $shouldConvert = false): self

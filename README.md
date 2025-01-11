@@ -12,7 +12,7 @@ A new `currency(string | Closure $currency = null, bool $shouldConvert = false)`
 
 ### Summary (Table Builder)
 
-The summarizer classes `Sum` and `Average` contains the method `currency(string | Closure $currency = null, bool $shouldConvert = false)` to display the value in the configured currency format.
+The summarizer classes `Summarizer`, `Sum` and `Average` contains the method `currency(string | Closure $currency = null, bool $shouldConvert = false)` to display the value in the configured currency format.
 
 ### Text Entry (InfoLists)
 
