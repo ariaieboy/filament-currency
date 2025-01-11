@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.11.0 - 2025-01-11
+
+### What's Changed
+
+* Include Support for Summarizer by @eele94 in https://github.com/ariaieboy/filament-currency/pull/46
+
+### New Contributors
+
+* @eele94 made their first contribution in https://github.com/ariaieboy/filament-currency/pull/46
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.10.0...1.11.0
+
 ## 1.10.0 - 2024-11-03
 
 - add support for `MONEY_DEFAULTS_CONVERT` env variable
