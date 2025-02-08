@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.12.0 - 2025-02-08
+
+- add support for laravel-money version 6
+
+> if you use PHP 8.4 you should upgrade to laravel-money version 6
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.11.0...1.12.0
+
 ## 1.11.0 - 2025-01-11
 
 ### What's Changed
