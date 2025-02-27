@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 1.13.0 - 2025-02-27
+
+### What's Changed
+
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/ariaieboy/filament-currency/pull/47
+
+### New Contributors
+
+* @laravel-shift made their first contribution in https://github.com/ariaieboy/filament-currency/pull/47
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.12.0...1.13.0
+
 ## 1.12.0 - 2025-02-08
 
 - add support for laravel-money version 6
