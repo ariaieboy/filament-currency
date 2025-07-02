@@ -6,6 +6,6 @@ return [
      * from version 5 laravel-money introduced a new config and env variable `MONEY_DEFAULTS_CURRENCY`
      * we use it in the fallback to support the laravel-money version 5.
      */
-    'default_currency' => env('CURRENCY_DEFAULT', env('MONEY_DEFAULTS_CURRENCY', config('money.defaults.currency', 'USD'))),
+    'default_currency' => env('MONEY_DEFAULTS_CURRENCY', 'USD'),
     'default_convert' => env('MONEY_DEFAULTS_CONVERT', false),
 ];
