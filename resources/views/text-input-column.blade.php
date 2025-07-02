@@ -1,5 +1,5 @@
 @php
-    use Filament\Support\Enums\Alignment;
+    use Filament\Support\Enums\Alignment;use Filament\Support\Facades\FilamentAsset;use Filament\Support\Facades\FilamentView;use Filament\Tables\Table;use Illuminate\Support\Js;
 
     $isDisabled = $isDisabled();
     $state = $getState();
@@ -11,11 +11,8 @@
         $alignment = filled($alignment) ? (Alignment::tryFrom($alignment) ?? $alignment) : null;
     }
 
-    if (filled($mask)) {
-        $type = 'text';
-    } else {
-        $type = $getType();
-    }
+    $type = filled($mask) ? 'text' : $getType();
+
     $xmask = "\$money(\$input,'$decimalSeparator','$thousandSeparator',$precision)";
     $xchange = <<<JS
 
@@ -37,9 +34,45 @@
 
                                 isLoading = false
 JS;
+    $attributes = $attributes
+            ->merge($getExtraAttributes(), escape: false)
+            ->merge([
+                'x-load' => FilamentView::hasSpaMode()
+                    ? 'visible || event (x-modal-opened)'
+                    : true,
+                'x-load-src' => FilamentAsset::getAlpineComponentSrc('columns/text-input', 'filament/tables'),
+            ], escape: false)
+            ->class([
+                'fi-ta-text-input',
+                'fi-inline' => $isInline(),
+            ]);
+    $inputAttributes = $getExtraInputAttributeBag()
+            ->merge([
+                'disabled' => $isDisabled,
+                'wire:loading.attr' => 'disabled',
+                'wire:target' => implode(',', Table::LOADING_TARGETS),
+                'x-bind:disabled' => $isDisabled ? null : 'isLoading',
+                'inputmode' => $getInputMode(),
+                'placeholder' => $getPlaceholder(),
+                'step' => $getStep(),
+                'type' => $type,
+                'x-mask:dynamic' => $xmask,
+                'x-on:change' . ($type === 'number' ? '.debounce.1s' : null) => $xchange,
+                'x-tooltip' => filled($tooltip = $getTooltip($state))
+                    ? '{
+                        content: ' . Js::from($tooltip) . ',
+                        theme: $store.theme,
+                    }'
+                    : null,
+            ], escape: false)
+            ->class([
+                'fi-input',
+                ($alignment instanceof Alignment) ? "fi-align-{$alignment->value}" : (is_string($alignment) ? $alignment : ''),
+            ]);
 @endphp
 
 <div
+        wire:ignore.self
         x-data="{
         error: undefined,
 
@@ -49,7 +82,7 @@ JS;
 
         name: @js($getName()),
 
-        recordKey: @js($recordKey),
+        recordKey: @js($getRecordKey()),
 
         state: @js($state),
     }"
@@ -82,66 +115,32 @@ JS;
             })
         }
     "
-        {{
-            $attributes
-                ->merge($getExtraAttributes(), escape: false)
-                ->class([
-                    'fi-ta-text-input',
-                    'px-3 py-4' => ! $isInline(),
-                ])
-        }}
+    <?= $attributes->toHtml() ?>
 >
     <input
             type="hidden"
             value="{{ str($state)->replace('"', '\\"')->replace(',','') }}"
             x-ref="newState"
     />
-
-    <x-filament::input.wrapper
-            :alpine-disabled="'isLoading || ' . \Illuminate\Support\Js::from($isDisabled)"
-            alpine-valid="error === undefined"
+    <div
+            x-bind:class="{
+                    'fi-disabled': isLoading || <?= Js::from($isDisabled) ?>,
+                    'fi-invalid': error !== undefined,
+                }"
             x-tooltip="
-            error === undefined
-                ? false
-                : {
-                    content: error,
-                    theme: $store.theme,
-                }
-        "
+                    error === undefined
+                        ? false
+                        : {
+                            content: error,
+                            theme: $store.theme,
+                        }
+                "
             x-on:click.stop=""
+            class="fi-input-wrp"
     >
-        {{-- format-ignore-start --}}
-        <x-filament::input
-                :disabled="$isDisabled"
-                :input-mode="$getInputMode()"
-                :placeholder="$getPlaceholder()"
-                :step="$getStep()"
-                :type="$type"
-                :x-bind:disabled="$isDisabled ? null : 'isLoading'"
-                x-model="state"
-                x-on:blur="isEditing = false"
-                x-on:focus="isEditing = true"
-                :attributes="
-                \Filament\Support\prepare_inherited_attributes(
-                    $getExtraInputAttributeBag()
-                        ->merge([
-                            'x-on:change' . ($type === 'number' ? '.debounce.1s' : null) => $xchange,
-                            'x-mask:dynamic'=> $xmask,
-                        ])
-                        ->class([
-                            match ($alignment) {
-                                Alignment::Start => 'text-start',
-                                Alignment::Center => 'text-center',
-                                Alignment::End => 'text-end',
-                                Alignment::Left => 'text-left',
-                                Alignment::Right => 'text-right',
-                                Alignment::Justify, Alignment::Between => 'text-justify',
-                                default => $alignment,
-                            },
-                        ])
-                )
-            "
+        <input
+                x-model.lazy="state"
+            <?= $inputAttributes->toHtml() ?>
         />
-        {{-- format-ignore-end --}}
-    </x-filament::input.wrapper>
+    </div>
 </div>

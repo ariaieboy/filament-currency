@@ -122,7 +122,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
         });
         TextInputColumn::macro('currencyMask', function ($thousandSeparator = ',', $decimalSeparator = '.', $precision = 2): TextInputColumn {
             /**
-             * @var TextInput $this
+             * @var TextInputColumn $this
              */
             $this->view = 'filament-currency::text-input-column';
             $this->viewData(compact('thousandSeparator', 'decimalSeparator', 'precision'));
