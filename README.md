@@ -1,14 +1,16 @@
-# Enhanced Currency Related stuff for Filament
+# Filament Currency formatting and conversion package
 ![filament currency](https://banners.beyondco.de/Filament%20Currency.jpeg?theme=dark&packageManager=composer+require&packageName=ariaieboy%2Ffilament-currency&pattern=texture&style=style_2&description=Filament+laravel-money+formatter&md=1&showWatermark=1&fontSize=150px&images=currency-dollar&widths=500&heights=500)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ariaieboy/filament-currency.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/filament-currency)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ariaieboy/filament-currency/fix-php-code-styling.yml?label=code%20style&style=flat-square)](https://github.com/ariaieboy/filament-currency/actions?query=workflow%3A"Fix+PHP+Code+Styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ariaieboy/filament-currency.svg?style=flat-square)](https://packagist.org/packages/ariaieboy/filament-currency)
 
-Filament V3 unlike V2 that uses [laravel-money](https://github.com/akaunting/laravel-money) package for formatting money TextColumns uses PHP native [NumberFormatter](https://www.php.net/manual/en/class.numberformatter.php) class.
+This package provides some macros for `TextColumn`, `TextEntry` and summerizer `Average` and `Sum` to format the money values using the [laravel-money](https://github.com/akaunting/laravel-money).
+
+We also provide a `currencyMask()` method for `TextInput` and `TextInputColumn` to mask your numbers in front-end and return the plain number to back-end.
 
 ### Text Column (Table Builder)
 
-A new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the Filament V2 money formatter.
+A new `currency(string | Closure $currency = null, bool $shouldConvert = false)` method to the `TextColumn` that uses the [laravel-money](https://github.com/akaunting/laravel-money) to format currencies.
 
 ### Summary (Table Builder)
 
