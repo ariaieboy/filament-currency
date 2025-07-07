@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 2.0.0 - 2025-07-07
+
+### What's Changed
+
+* 48 add filament v4 support by @ariaieboy in https://github.com/ariaieboy/filament-currency/pull/49
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/1.13.0...2.0.0
+
 ## 1.13.0 - 2025-02-27
 
 ### What's Changed
