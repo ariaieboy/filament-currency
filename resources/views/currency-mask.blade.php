@@ -49,22 +49,6 @@
     }
 JS;
 
-    if ($isPasswordRevealable) {
-        $xData = '{ isPasswordRevealed: false }';
-    } elseif (count($extraAlpineAttributes) || filled($mask)) {
-        $xData = '{}';
-    } else {
-        $xData = null;
-    }
-
-    if ($isPasswordRevealable) {
-        $type = null;
-    } elseif (filled($mask)) {
-        $type = 'text';
-    } else {
-        $type = $getType();
-    }
-
     $inputAttributes = $getExtraInputAttributeBag()
         ->merge($extraAlpineAttributes, escape: false)
         ->merge([
@@ -85,7 +69,7 @@ JS;
             'readonly' => $isReadOnly(),
             'required' => $isRequired() && (! $isConcealed),
             'step' => $getStep(),
-            'type' => $type,
+            'type' => 'text',
             $xmodel =>'masked',
             'x-data' => $xdata,
             'x-bind:type' => $isPasswordRevealable ? 'isPasswordRevealed ? \'text\' : \'password\'' : null,
