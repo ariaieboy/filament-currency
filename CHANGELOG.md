@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 2.0.1 - 2025-09-17
+
+### What's Changed
+
+* Fixes type not to text when using numeric by @TheSkybreaker in https://github.com/ariaieboy/filament-currency/pull/51
+
+### New Contributors
+
+* @TheSkybreaker made their first contribution in https://github.com/ariaieboy/filament-currency/pull/51
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2025-07-07
 
 ### What's Changed
