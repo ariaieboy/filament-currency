@@ -11,8 +11,6 @@
         $alignment = filled($alignment) ? (Alignment::tryFrom($alignment) ?? $alignment) : null;
     }
 
-    $type = filled($mask) ? 'text' : $getType();
-
     $xmask = "\$money(\$input,'$decimalSeparator','$thousandSeparator',$precision)";
     $xchange = <<<JS
 
@@ -55,7 +53,7 @@ JS;
                 'inputmode' => $getInputMode(),
                 'placeholder' => $getPlaceholder(),
                 'step' => $getStep(),
-                'type' => $type,
+                'type' => 'text',
                 'x-mask:dynamic' => $xmask,
                 'x-on:change' . ($type === 'number' ? '.debounce.1s' : null) => $xchange,
                 'x-tooltip' => filled($tooltip = $getTooltip($state))
