@@ -99,7 +99,7 @@ JS;
             :suffix-icon="$suffixIcon"
             :suffix-icon-color="$suffixIconColor"
             :valid="! $errors->has($statePath)"
-            :x-data="$xData"
+            :x-data="$xdata"
             :attributes="
             \Filament\Support\prepare_inherited_attributes($extraAttributeBag)
                 ->class(['fi-fo-text-input'])
