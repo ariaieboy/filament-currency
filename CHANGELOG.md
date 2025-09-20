@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 2.0.2 - 2025-09-20
+
+### What's Changed
+
+* Fixed Undefined variable $xData by @billmn in https://github.com/ariaieboy/filament-currency/pull/52
+
+### New Contributors
+
+* @billmn made their first contribution in https://github.com/ariaieboy/filament-currency/pull/52
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/2.0.1...2.0.2
+
 ## 2.0.1 - 2025-09-17
 
 ### What's Changed
