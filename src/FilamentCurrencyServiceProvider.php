@@ -42,7 +42,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
 
             return (new Money\Money(
                 $state,
-                (new Money\Currency(strtoupper($evaluator->evaluate($currency)))),
+                (new Money\Currency(strtoupper((string) $evaluator->evaluate($currency)))),
                 $shouldConvert,
             ))->format();
         };
@@ -51,11 +51,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var TextColumn $this
              */
-            $this->formatStateUsing(static function (Column $column, $state) use ($currency, $shouldConvert, $formatter): ?string {
-
-                return $formatter($state, $column, $currency, $shouldConvert);
-
-            });
+            $this->formatStateUsing(static fn(Column $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
 
             return $this;
         });
@@ -64,10 +60,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Sum $this
              */
-            $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
-
-                return $formatter($state, $summarizer, $currency, $shouldConvert);
-            });
+            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -76,11 +69,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Sum $this
              */
-            $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
-
-                return $formatter($state, $summarizer, $currency, $shouldConvert);
-
-            });
+            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -89,11 +78,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Average $this
              */
-            $this->formatStateUsing(static function (Summarizers\Summarizer $summarizer, $state) use ($currency, $shouldConvert, $formatter): ?string {
-
-                return $formatter($state, $summarizer, $currency, $shouldConvert);
-
-            });
+            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -102,11 +87,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var TextEntry $this
              */
-            $this->formatStateUsing(static function (TextEntry $column, $state) use ($currency, $shouldConvert, $formatter): ?string {
-
-                return $formatter($state, $column, $currency, $shouldConvert);
-
-            });
+            $this->formatStateUsing(static fn(TextEntry $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
 
             return $this;
         });
