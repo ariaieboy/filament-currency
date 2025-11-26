@@ -51,7 +51,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var TextColumn $this
              */
-            $this->formatStateUsing(static fn(Column $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
+            $this->formatStateUsing(static fn (Column $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
 
             return $this;
         });
@@ -60,7 +60,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Sum $this
              */
-            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
+            $this->formatStateUsing(static fn (Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -69,7 +69,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Sum $this
              */
-            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
+            $this->formatStateUsing(static fn (Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -78,7 +78,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var Summarizers\Average $this
              */
-            $this->formatStateUsing(static fn(Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
+            $this->formatStateUsing(static fn (Summarizers\Summarizer $summarizer, $state): ?string => $formatter($state, $summarizer, $currency, $shouldConvert));
 
             return $this;
         });
@@ -87,7 +87,7 @@ class FilamentCurrencyServiceProvider extends PackageServiceProvider
             /**
              * @var TextEntry $this
              */
-            $this->formatStateUsing(static fn(TextEntry $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
+            $this->formatStateUsing(static fn (TextEntry $column, $state): ?string => $formatter($state, $column, $currency, $shouldConvert));
 
             return $this;
         });
