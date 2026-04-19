@@ -2,6 +2,14 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 3.0.1 - 2026-04-19
+
+### What's Changed
+
+* Laravel 13.x Compatibility by @laravel-shift in https://github.com/ariaieboy/filament-currency/pull/55
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/3.0.0...3.0.1
+
 ## 3.0.0 - 2026-01-28
 
 - filament v5 support added
