@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 2.1.0 - 2026-06-13
+
+### What's Changed
+
+* Support Laravel 13 on v2 too by @ziming in https://github.com/ariaieboy/filament-currency/pull/56
+
+### New Contributors
+
+* @ziming made their first contribution in https://github.com/ariaieboy/filament-currency/pull/56
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/2.0.3...2.1.0
+
 ## 3.0.1 - 2026-04-19
 
 ### What's Changed
