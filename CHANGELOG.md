@@ -2,6 +2,18 @@
 
 All notable changes to `filament-currency` will be documented in this file.
 
+## 3.0.2 - 2026-10-23
+
+### What's Changed
+
+* Fix currency mask echoing programmatic updates back to Livewire by @pabbec in https://github.com/ariaieboy/filament-currency/pull/58
+
+### New Contributors
+
+* @pabbec made their first contribution in https://github.com/ariaieboy/filament-currency/pull/58
+
+**Full Changelog**: https://github.com/ariaieboy/filament-currency/compare/3.0.1...3.0.2
+
 ## 2.1.0 - 2026-06-13
 
 ### What's Changed
