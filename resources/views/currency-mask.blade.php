@@ -29,19 +29,27 @@
     {
         input:\$wire.{$applyStateBindingModifiers("\$entangle('{$statePath}')")},
         masked:'',
+        syncing: false,
         init(){
-        \$nextTick(this.updateMasked());
-        \$watch('masked',(value, oldValue)=>this.updateInput(value,oldValue));
-        \$watch('input', () => this.updateMasked());
+            \$nextTick(this.updateMasked());
+            \$watch('masked',(value, oldValue)=>this.updateInput(value,oldValue));
+            \$watch('input', () => this.updateMasked());
         },
-        updateMasked(){
+        updateMasked(){        
+            this.syncing = true
+            // set this.masked from this.input only when the numeric value differs
             if(this.input !== undefined && typeof Number(this.input) === 'number') {
                 if(this.masked?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== this.input){
                     this.masked = this.input?.toString().replaceAll('.','$decimalSeparator');
                 }
             }
+            \$nextTick(() => { this.syncing = false })
         },
         updateInput(value, oldValue){
+            if (this.syncing) {
+                return;
+            }
+            // set this.input only for a real user edit of `masked`
             if(value?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.') !== oldValue?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.')){
                 this.input = this.masked?.toString().replaceAll('$thousandSeparator','').replaceAll('$decimalSeparator','.');
             }
